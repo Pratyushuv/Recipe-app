@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import axios from "axios"
 export default function Home(){
+    //TODO:should be integrated once the UI is ready
     const fetchData=async()=>{
         try{
             const res=await axios.get(
@@ -14,7 +15,10 @@ useEffect(()=>{
     fetchData()
 },[])
     return(
-    <div>        
+    <div> 
+        <div className="" >
+            <span>Recipe Finder </span>
+            </div>       
     </div>
     )
 }
