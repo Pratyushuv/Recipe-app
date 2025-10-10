@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Card = () => {
   return (
     <div className="card bg--200 white w-full rounded-2xl border-1 border-zinc-500 shadow-2xl">
