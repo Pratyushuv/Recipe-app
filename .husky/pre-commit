@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+# Prevent direct commits to main branch
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" = "main" ]; then
+  echo "🚫 Committing directly to '$branch' is not allowed. Please use a feature branch."
+  exit 1
+fi
+
+echo "🔧 Running pre-commit checks..."
+
+# Run lint-staged to format and lint code
+npx lint-staged
