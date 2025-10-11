@@ -5,7 +5,7 @@ import { RecipeCard } from "./card";
 export default function Home() {
   const [recipe, setRecipe] = useState([]);
 
-  const fetchData = async () => {
+  const fetchData = async (searchword = "chicken") => {
     try {
       const res = await axios.get(
         "https://www.themealdb.com/api/json/v1/1/search.php?s=chicken",
@@ -24,8 +24,14 @@ export default function Home() {
     fetchData();
   }, []);
 
+  function handleSearchClick(searchword){
+    fetchData(searchword);
+    onSearch(searchword);
+}
+
   return (
     <div>
+        <SearchBar onSearch={handleSearchClick} />
       {recipe.map((meal) => (
         <RecipeCard
           key={meal.idMeal}
