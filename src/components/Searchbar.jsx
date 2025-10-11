@@ -2,6 +2,7 @@ import { useState } from "react"
 
 function SearchBar({onSearch}){
     const[searchKeyword, setSearchKeyword] = useState("");
+    
     function handleSubmit(e){
         e.preventDefault();
         if(!searchKeyword.trim()) return;
