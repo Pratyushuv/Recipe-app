@@ -1,17 +1,13 @@
-export const Card = () => {
+export const RecipeCard = ({ title, category, imageSrc }) => {
   return (
     <div className="card bg--200 white w-full rounded-2xl border-1 border-zinc-500 shadow-2xl">
       <section className="flex w-full flex-col items-start gap-4 p-3 md:gap-10">
-        <img
-          src="https://wallpaperaccess.com/full/8736646.jpg"
-          alt="food-image"
-          className="w-full rounded-xl"
-        />
-        <h1 className="w-full text-3xl italic md:text-5xl xl:text-8xl">
-          Recipe title
+        <img src={imageSrc} alt="food-image" className="w-full rounded-xl" />
+        <h1 className="w-full text-center text-3xl italic md:text-5xl xl:text-8xl">
+          {title}
         </h1>
-        <p className="w-full text-2xl font-semibold italic md:text-4xl xl:text-6xl">
-          Category
+        <p className="w-full text-center text-2xl font-semibold italic md:text-4xl xl:text-6xl">
+          {category}
         </p>
 
         <div className="buttons flex w-full flex-col justify-end gap-10">
@@ -52,4 +48,4 @@ export const Card = () => {
   );
 };
 
-export default Card;
+export default RecipeCard;
