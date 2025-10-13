@@ -28,7 +28,6 @@ export default function Home() {
   const handleViewRecipeDetails = () => {};
 
   const handleAddFavourites = (recipe) => {
-    console.log(favourites);
     if (favourites.some((fav) => fav.id === recipe.id)) {
       setFavourites(favourites.filter((fav) => fav.id !== recipe.id));
     } else {
