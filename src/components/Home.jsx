@@ -23,6 +23,7 @@ export default function Home() {
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <div>
       {recipe.map((meal) => (
