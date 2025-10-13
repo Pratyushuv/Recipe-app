@@ -6,13 +6,11 @@ import SearchBar from "./Searchbar";
 export default function Home() {
   const [recipe, setRecipe] = useState([]);
 
-  const fetchData = async (searchword = "chicken") => {
+  const fetchData = async (keyword = "chicken") => {
     try {
-      console.log("object");
       const res = await axios.get(
-        `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchword}`,
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${keyword}`,
       );
-      console.log("res", res);
       const recipeData = res.data.meals;
       setRecipe(recipeData);
     } catch (err) {
@@ -27,8 +25,8 @@ export default function Home() {
     fetchData();
   }, []);
 
-  function handleSearchClick(searchword) {
-    fetchData(searchword);
+  function handleSearchClick(searchKeyword) {
+    fetchData(searchKeyword);
   }
 
   return (
