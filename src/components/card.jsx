@@ -3,8 +3,13 @@ export const RecipeCard = ({
   category,
   imageSrc,
   altText,
+  id,
   handleViewRecipeDetails,
+  handleAddFavourites,
+  favourites,
 }) => {
+  const isFavourite = favourites.some((fav) => fav.id === id);
+
   return (
     <div className="card bg--200 white w-full rounded-2xl border-1 border-zinc-500 shadow-2xl">
       <section className="flex w-full flex-col items-start gap-2 p-3 md:gap-5">
@@ -23,12 +28,17 @@ export const RecipeCard = ({
           >
             View Details
           </button>
-          <button className="flex w-full justify-center pb-4">
+          <button
+            className="flex w-full justify-center pb-4"
+            onClick={() =>
+              handleAddFavourites({ id, title, category, imageSrc, altText })
+            }
+          >
             <svg
               width="35px"
               height="35px"
               viewBox="0 0 24 24"
-              fill="#ffffff"
+              fill={isFavourite ? "black" : "#ffffff"}
               xmlns="http://www.w3.org/2000/svg"
             >
               <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
