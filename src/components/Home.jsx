@@ -32,16 +32,18 @@ export default function Home() {
   return (
     <div>
       <SearchBar onSearch={handleSearchClick} />
-      {recipe.map((meal) => (
-        <RecipeCard
-          key={meal.idMeal}
-          title={meal.strMeal}
-          category={meal.strCategory}
-          imageSrc={meal.strMealThumb}
-          altText={meal.strMeal}
-          handleViewRecipeDetails={handleViewRecipeDetails}
-        />
-      ))}
+      <div className="cards grid grid-cols-1 gap-5 p-5 sm:grid-cols-2 md:grid-cols-3 md:p-5 lg:grid-cols-4 lg:p-10 xl:grid-cols-5">
+        {recipe.map((meal) => (
+          <RecipeCard
+            key={meal.idMeal}
+            title={meal.strMeal}
+            category={meal.strCategory}
+            imageSrc={meal.strMealThumb}
+            altText={meal.strMeal}
+            handleViewRecipeDetails={handleViewRecipeDetails}
+          />
+        ))}
+      </div>
     </div>
   );
 }
