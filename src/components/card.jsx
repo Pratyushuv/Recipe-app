@@ -7,26 +7,26 @@ export const RecipeCard = ({
 }) => {
   return (
     <div className="card bg--200 white w-full rounded-2xl border-1 border-zinc-500 shadow-2xl">
-      <section className="flex w-full flex-col items-start gap-4 p-3 md:gap-10">
+      <section className="flex w-full flex-col items-start gap-2 p-3 md:gap-5">
         <img src={imageSrc} alt={altText} className="w-full rounded-xl" />
-        <h1 className="w-full text-center text-3xl italic md:text-5xl xl:text-8xl">
+        <h1 className="w-full text-center text-xl italic md:text-xl xl:text-2xl">
           {title}
         </h1>
-        <p className="w-full text-center text-2xl font-semibold italic md:text-4xl xl:text-6xl">
+        <p className="text-30 md:text-50 xl:text-80 w-full text-center font-semibold italic">
           {category}
         </p>
 
-        <div className="buttons flex w-full flex-col justify-end gap-10">
+        <div className="buttons flex w-full flex-col justify-end gap-5">
           <button
-            className="text-10 w-50 self-center rounded-full border-2 bg-black px-3 py-2 font-bold text-white md:text-2xl xl:w-80 xl:py-5 xl:text-4xl"
+            className="text-10 xl:text-50 md:text-50 w-50 self-center rounded-full border-2 bg-black px-3 py-2 font-bold text-white xl:w-40 xl:py-3"
             onClick={handleViewRecipeDetails}
           >
             View Details
           </button>
           <button className="flex w-full justify-center pb-4">
             <svg
-              width="60px"
-              height="60px"
+              width="35px"
+              height="35px"
               viewBox="0 0 24 24"
               fill="#ffffff"
               xmlns="http://www.w3.org/2000/svg"
