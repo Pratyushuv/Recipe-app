@@ -1,10 +1,12 @@
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { RecipeCard } from "./card";
 import SearchBar from "./Searchbar";
 
 export default function Home() {
   const [recipe, setRecipe] = useState([]);
+  const navigate = useNavigate();
 
   const getStoredData = () => {
     return JSON.parse(localStorage.getItem("fav")) || [];
@@ -23,9 +25,10 @@ export default function Home() {
       console.log("failed to fetch", err);
     }
   };
-
   //TODO
-  const handleViewRecipeDetails = () => {};
+  const handleViewRecipeDetails = (idMeal) => {
+    navigate(`/recipe/${idMeal}`);
+  };
 
   const handleAddFavourites = (recipe) => {
     if (favourites.some((fav) => fav.id === recipe.id)) {
@@ -60,9 +63,9 @@ export default function Home() {
             category={meal.strCategory}
             imageSrc={meal.strMealThumb}
             altText={meal.strMeal}
-            handleViewRecipeDetails={handleViewRecipeDetails}
             handleAddFavourites={handleAddFavourites}
             isFavourite={favourites.some((fav) => fav.id === meal.idMeal)}
+            handleViewRecipeDetails={() => handleViewRecipeDetails(meal.idMeal)}
           />
         ))}
       </div>
