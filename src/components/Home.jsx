@@ -49,6 +49,7 @@ export default function Home() {
   function handleSearchClick(searchKeyword) {
     fetchData(searchKeyword);
   }
+  
 //TODO need to route to /favourite 
   function handleFavouriteRecipes() {
     console.log("Favourites button clicked");
