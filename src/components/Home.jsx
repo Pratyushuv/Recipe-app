@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { RecipeCard } from "./card";
+import SearchBar from "./Searchbar";
 
 export default function Home() {
   const [recipe, setRecipe] = useState([]);
 
-  const fetchData = async () => {
+  const fetchData = async (keyword = "chicken") => {
     try {
       const res = await axios.get(
-        "https://www.themealdb.com/api/json/v1/1/search.php?s=chicken",
+        `https://www.themealdb.com/api/json/v1/1/search.php?s=${keyword}`,
       );
       const recipeData = res.data.meals;
       setRecipe(recipeData);
@@ -24,8 +25,13 @@ export default function Home() {
     fetchData();
   }, []);
 
+  function handleSearchClick(searchKeyword) {
+    fetchData(searchKeyword);
+  }
+
   return (
     <div>
+      <SearchBar onSearch={handleSearchClick} />
       {recipe.map((meal) => (
         <RecipeCard
           key={meal.idMeal}
