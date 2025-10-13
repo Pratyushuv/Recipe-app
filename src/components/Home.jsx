@@ -5,9 +5,12 @@ import SearchBar from "./Searchbar";
 
 export default function Home() {
   const [recipe, setRecipe] = useState([]);
-  const [favourites, setFavourites] = useState(
-    () => JSON.parse(localStorage.getItem("fav")) || [],
-  );
+
+  const getStoredData = () => {
+    return JSON.parse(localStorage.getItem("fav")) || [];
+  };
+
+  const [favourites, setFavourites] = useState(getStoredData);
 
   const fetchData = async (keyword = "chicken") => {
     try {
@@ -24,11 +27,12 @@ export default function Home() {
   //TODO
   const handleViewRecipeDetails = () => {};
 
-  const handleAddFavourites = (Recipe) => {
-    if (favourites.some((fav) => fav.id === Recipe.id)) {
-      setFavourites(favourites.filter((fav) => fav.id !== Recipe.id));
+  const handleAddFavourites = (recipe) => {
+    console.log(favourites);
+    if (favourites.some((fav) => fav.id === recipe.id)) {
+      setFavourites(favourites.filter((fav) => fav.id !== recipe.id));
     } else {
-      setFavourites([...favourites, Recipe]);
+      setFavourites([...favourites, recipe]);
     }
   };
 
@@ -59,7 +63,7 @@ export default function Home() {
             altText={meal.strMeal}
             handleViewRecipeDetails={handleViewRecipeDetails}
             handleAddFavourites={handleAddFavourites}
-            favourites={favourites}
+            isFavourite={favourites.some((fav) => fav.id === meal.idMeal)}
           />
         ))}
       </div>

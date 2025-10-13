@@ -6,10 +6,8 @@ export const RecipeCard = ({
   id,
   handleViewRecipeDetails,
   handleAddFavourites,
-  favourites,
+  isFavourite,
 }) => {
-  const isFavourite = favourites.some((fav) => fav.id === id);
-
   return (
     <div className="card bg--200 white w-full rounded-2xl border-1 border-zinc-500 shadow-2xl">
       <section className="flex w-full flex-col items-start gap-2 p-3 md:gap-5">
