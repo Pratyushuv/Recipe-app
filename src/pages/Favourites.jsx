@@ -10,9 +10,7 @@ export default function Favourites(){
     },[]);
 
     //TODO need to show view recipe details
-    const handleViewRecipeDetails = () => {
-
-    };
+    const handleViewRecipeDetails = () => {};
 
     const handleRemoveFavourites = (recipe) => {
         const updatedFav = favouriteRecipes.filter((fav) => fav.id !== recipe.id);
@@ -20,7 +18,6 @@ export default function Favourites(){
         localStorage.setItem("fav", JSON.stringify(updatedFav));
     }
 
-    
   return (
     <div className="p-5">
       <h1 className="text-3xl font-bold text-center mb-8">Your Favourites</h1>
@@ -44,5 +41,4 @@ export default function Favourites(){
       )}
     </div>
   );
-
 }
