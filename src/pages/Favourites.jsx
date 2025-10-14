@@ -27,7 +27,7 @@ export default function Favourites(){
               key={recipe.id}
               {...recipe}
               handleViewRecipeDetails={() => navigate(`/recipe/${recipe.id}`)}
-              handleAddFavourites={() => handleRemoveFavourites(recipe)}
+              toggleFavourite={() => handleRemoveFavourites(recipe)}
               isFavourite={true}
             />
           ))}

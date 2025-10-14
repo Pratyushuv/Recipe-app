@@ -5,7 +5,7 @@ export const RecipeCard = ({
   altText,
   id,
   handleViewRecipeDetails,
-  handleAddFavourites,
+  toggleFavourite,
   isFavourite,
 }) => {
   return (
@@ -29,7 +29,7 @@ export const RecipeCard = ({
           <button
             className="flex w-full justify-center pb-4"
             onClick={() =>
-              handleAddFavourites({ id, title, category, imageSrc, altText })
+              toggleFavourite({ id, title, category, imageSrc, altText })
             }
           >
             <svg
