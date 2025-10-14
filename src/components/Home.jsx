@@ -27,9 +27,7 @@ export default function Home() {
   };
 
   //TODO
-  const handleViewRecipeDetails = () => {
-
-  };
+  const handleViewRecipeDetails = () => {};
 
   const handleAddFavourites = (recipe) => {
     if (favourites.some((fav) => fav.id === recipe.id)) {
@@ -52,7 +50,6 @@ export default function Home() {
     fetchData(searchKeyword);
   }
   
-
   return (
     <div className="w-full px-4 mt-8">
       <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-4 mb-8 w-full">
