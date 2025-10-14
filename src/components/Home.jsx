@@ -26,9 +26,6 @@ export default function Home() {
     }
   };
 
-  //TODO
-  const handleViewRecipeDetails = () => {};
-
   const handleAddFavourites = (recipe) => {
     if (favourites.some((fav) => fav.id === recipe.id)) {
       setFavourites(favourites.filter((fav) => fav.id !== recipe.id));
@@ -65,9 +62,9 @@ export default function Home() {
             category={meal.strCategory}
             imageSrc={meal.strMealThumb}
             altText={meal.strMeal}
-            handleViewRecipeDetails={handleViewRecipeDetails}
             handleAddFavourites={handleAddFavourites}
             isFavourite={favourites.some((fav) => fav.id === meal.idMeal)}
+            handleViewRecipeDetails={() => navigate(`/recipe/${meal.idMeal}`)}
           />
         ))}
       </div>
