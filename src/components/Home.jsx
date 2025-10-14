@@ -25,10 +25,6 @@ export default function Home() {
       console.log("failed to fetch", err);
     }
   };
-  //TODO
-  const handleViewRecipeDetails = (idMeal) => {
-    navigate(`/recipe/${idMeal}`);
-  };
 
   const handleAddFavourites = (recipe) => {
     if (favourites.some((fav) => fav.id === recipe.id)) {
@@ -65,7 +61,7 @@ export default function Home() {
             altText={meal.strMeal}
             handleAddFavourites={handleAddFavourites}
             isFavourite={favourites.some((fav) => fav.id === meal.idMeal)}
-            handleViewRecipeDetails={() => handleViewRecipeDetails(meal.idMeal)}
+            handleViewRecipeDetails={() => navigate(`/recipe/${meal.idMeal}`)}
           />
         ))}
       </div>

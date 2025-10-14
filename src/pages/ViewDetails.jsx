@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 export default function RecipeDetails() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchRecipeById = async () => {
       try {
@@ -13,14 +15,26 @@ export default function RecipeDetails() {
         );
         if (res.data.meals) {
           setRecipe(res.data.meals[0]);
+        } else {
+          setRecipe(null);
         }
       } catch (error) {
         console.error("Failed to fetch recipe details", error);
+        setRecipe(null);
+      } finally {
+        setLoading(false);
       }
     };
     fetchRecipeById();
   }, [id]);
-  if (!recipe) return <div className="text-red-600">Loading....</div>;
+
+  if (loading) {
+    return <div className="text-red-600">Loading...</div>;
+  }
+  if (!recipe) {
+    return <div className="text-red-600">No recipe found</div>;
+  }
+
   const ingredients = [];
   for (let i = 1; i <= 20; i++) {
     const ingredient = recipe[`strIngredient${i}`];
@@ -49,8 +63,8 @@ export default function RecipeDetails() {
           Ingredients
         </h3>
         <ol className="md:text mb-6 list-inside list-disc space-y-1 text-sm text-[#4d4d4d] sm:text-base">
-          {ingredients.map((items, index) => (
-            <li key={index}>{items}</li>
+          {ingredients.map((items) => (
+            <li key={items}>{items}</li>
           ))}
         </ol>
         <h3 className="mb-2 text-lg font-semibold sm:text-xl md:text-2xl">
@@ -66,7 +80,11 @@ export default function RecipeDetails() {
               target="_blank"
               className="flex items-center gap-2 text-sm transition-colors duration-200 hover:text-red-600 sm:text-base"
             >
-              <img src="/src/assets/youtube.png" className="h-5 w-5"></img>
+              <img
+                src="/src/assets/youtube.png"
+                alt="youtube icon"
+                className="h-5 w-5"
+              />
               <span>Click to watch on youtube</span>
             </a>
           </div>
