@@ -47,34 +47,40 @@ export default function RecipeDetails() {
   }
 
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-start overflow-x-hidden px-4 py-8 text-left font-bold sm:px-6 md:px-10 lg:px-16 xl:px-24">
-      <div className="w-full max-w-5xl rounded-md bg-[#fceef0] p-4 sm:p-6 md:p-8">
-        <h1 className="mb-2 text-2xl text-[#ed002d] sm:text-3xl md:text-4xl">
+    <div className="min-h-screen w-full bg-[#fceef0] px-4 py-10 xl:px-40">
+      <div className="mx-auto w-full px-4 sm:px-6 lg:px-8">
+        <h1 className="mb-4 text-center text-2xl font-semibold text-[#8c0032] sm:text-3xl md:text-6xl">
           {recipe.strMeal}
         </h1>
-        <p className="mb-4 text-base text-[#8c0032] sm:text-lg md:text-xl">
+        <p className="mb-12 text-center text-base text-[#ed002d] sm:text-lg md:text-xl">
           Category:{recipe.strCategory}
         </p>
-        <img
-          src={recipe.strMealThumb}
-          className="mx-auto mb-6 h-auto max-h-[500px] w-full max-w-[500px] rounded-md"
-        />
-        <h3 className="mb-2 text-lg font-semibold sm:text-xl md:text-2xl">
-          Ingredients
-        </h3>
-        <ol className="md:text mb-6 list-inside list-disc space-y-1 text-sm text-[#4d4d4d] sm:text-base">
-          {ingredients.map((items) => (
-            <li key={items}>{items}</li>
-          ))}
-        </ol>
-        <h3 className="mb-2 text-lg font-semibold sm:text-xl md:text-2xl">
+        <div className="mb-10 flex flex-col gap-8 md:flex-row md:items-start">
+          <div className="px-4 sm:px-6 md:w-1/2 lg:w-1/3 lg:px-8">
+            <h3 className="mb-2 text-lg font-semibold sm:text-xl md:text-2xl">
+              Ingredients
+            </h3>
+            <ol className="list-inside list-disc space-y-1 text-sm whitespace-nowrap text-[#4d4d4d] sm:text-base xl:text-xl">
+              {ingredients.map((items) => (
+                <li key={items}>{items}</li>
+              ))}
+            </ol>
+          </div>
+          <div className="flex justify-center md:w-1/2 lg:w-2/3">
+            <img
+              src={recipe.strMealThumb}
+              className="h-auto max-h-[400px] w-full max-w-md rounded-md object-cover lg:max-h-[600px] lg:max-w-lg"
+            />
+          </div>
+        </div>
+        <h3 className="mb-2 text-lg font-semibold sm:px-6 sm:text-xl md:px-4 md:text-2xl lg:px-8">
           Instructions
         </h3>
-        <p className="text-sm leading-relaxed text-[#4d4d4d] sm:text-base md:text-lg">
+        <p className="px-4 text-justify text-sm leading-relaxed text-[#4d4d4d] sm:px-6 sm:text-base lg:px-8 xl:text-xl">
           {recipe.strInstructions}
         </p>
         {recipe.strYoutube && (
-          <div className="pt-8">
+          <div className="px-4 pt-8 sm:px-6 lg:px-8">
             <a
               href={recipe.strYoutube}
               target="_blank"
