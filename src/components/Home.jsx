@@ -1,10 +1,12 @@
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { RecipeCard } from "./card";
 import SearchBar from "./Searchbar";
 
 export default function Home() {
   const [recipe, setRecipe] = useState([]);
+  const navigate = useNavigate();
 
   const getStoredData = () => {
     return JSON.parse(localStorage.getItem("fav")) || [];
@@ -50,16 +52,15 @@ export default function Home() {
     fetchData(searchKeyword);
   }
   
-//TODO need to route to /favourite 
   function handleFavouriteRecipes() {
-    console.log("Favourites button clicked");
+    navigate("/favourites");
   }
 
   return (
     <div className="w-full px-4 mt-8">
       <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-4 mb-8 w-full">
       <SearchBar onSearch={handleSearchClick} />
-      <button onClick={handleFavouriteRecipes} className="bg-[rgba(114,63,95,1)] hover:bg-[rgba(114,63,95,0.9)] text-white px-5 py-3 rounded-full font-semibold text-base sm:text-lg shadow-md transition-all duration-200 mt-">Favourites</button>
+      <button onClick={handleFavouriteRecipes} className="bg-[rgba(114,63,95,1)] hover:bg-[rgba(114,63,95,0.9)] text-white px-5 py-3 rounded-full font-semibold text-base sm:text-lg shadow-md transition-all duration-200 mt-9">Favourites</button>
       </div>
       <div className="cards grid grid-cols-1 gap-5 p-5 sm:grid-cols-2 md:grid-cols-3 md:p-5 lg:grid-cols-4 lg:p-10 xl:grid-cols-5">
         {recipe.map((meal) => (
