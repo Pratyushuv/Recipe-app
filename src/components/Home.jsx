@@ -19,7 +19,7 @@ export default function Home() {
       const res = await axios.get(
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${keyword}`,
       );
-      const recipeData = res.data.meals;
+      const recipeData = res.data.meals || [];
       setRecipe(recipeData);
     } catch (err) {
       console.log("failed to fetch", err);
@@ -53,6 +53,8 @@ export default function Home() {
       <SearchBar onSearch={handleSearchClick} />
       <button onClick={() =>navigate("/favourites")} className="bg-[rgba(114,63,95,1)] hover:bg-[rgba(114,63,95,0.9)] text-white px-5 py-3 rounded-full font-semibold text-base sm:text-lg shadow-md transition-all duration-200 mt-9">Favourites</button>
       </div>
+      <div className="p-5 md:p-5 lg:p-10">
+        {recipe.length > 0 ? (
       <div className="cards grid grid-cols-1 gap-5 p-5 sm:grid-cols-2 md:grid-cols-3 md:p-5 lg:grid-cols-4 lg:p-10 xl:grid-cols-5">
         {recipe.map((meal) => (
           <RecipeCard
@@ -67,6 +69,10 @@ export default function Home() {
             handleViewRecipeDetails={() => navigate(`/recipe/${meal.idMeal}`)}
           />
         ))}
+        </div>
+        ) : (
+          <p className="text-center text-gray-500 text-lg mt-10">No items found</p>
+          )}
       </div>
     </div>
   );
